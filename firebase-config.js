@@ -3,15 +3,15 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/fireba
 import { getAuth } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
 import { getFirestore } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
-// Firebase Configuration
+// Firebase Configuration (Updated with your original credentials)
 const firebaseConfig = {
-    apiKey: "AIzaSyDvvZHosL4lmwqCngT0Sk0kQ_jXLFEVGEc",
-    authDomain: "raj-social-panel-80680.firebaseapp.com",
-    projectId: "raj-social-panel-80680",
-    storageBucket: "raj-social-panel-80680.firebasestorage.app",
-    messagingSenderId: "52377949397",
-    appId: "1:52377949397:web:f8dc0590b8f0a0cc81374d",
-    measurementId: "G-39JTY197F7"
+  apiKey: "AIzaSyDwBxEiWermQ3xqZ0JN8rlKUfpLPH7zOrU",
+  authDomain: "raj-social-panel-80680.firebaseapp.com",
+  projectId: "raj-social-panel-80680",
+  storageBucket: "raj-social-panel-80680.firebasestorage.app",
+  messagingSenderId: "12577949197",
+  appId: "1:12577949197:web:f4eb59761b003dbe853744",
+  measurementId: "G-20JY74T8YW"
 };
 
 // Initialize Firebase App
