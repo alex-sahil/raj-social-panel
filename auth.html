@@ -3,43 +3,224 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login / Register - Raj Social Panel</title>
+    <title>Raj Social Panel - Premium SMM Services</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
     <style>
-        .auth-container {
-            max-width: 450px;
-            margin: 60px auto;
-            text-align: center;
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: radial-gradient(circle at top center, #0f172a 0%, #020617 100%);
+            color: #f8fafc;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
-        .tab-btn {
-            background: none;
-            border: none;
-            color: var(--text-sub);
+
+        .hero-header {
+            text-align: center;
+            padding: 40px 20px 20px;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .badge-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(16, 185, 129, 0.15);
+            border: 1px solid rgba(16, 185, 129, 0.4);
+            color: #10b981;
+            padding: 8px 18px;
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .main-title {
+            font-size: 38px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            color: #38bdf8;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+        }
+
+        .sub-title {
             font-size: 18px;
             font-weight: 600;
-            padding: 10px 20px;
+            color: #e2e8f0;
+            margin-bottom: 10px;
+        }
+
+        .desc-text {
+            font-size: 14px;
+            color: #94a3b8;
+            line-height: 1.6;
+        }
+
+        .auth-card-wrapper {
+            max-width: 440px;
+            width: 90%;
+            margin: 20px auto 50px;
+        }
+
+        .custom-card {
+            background: rgba(15, 23, 42, 0.75);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 32px 28px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+        }
+
+        .tab-group {
+            display: flex;
+            background: rgba(2, 6, 23, 0.6);
+            padding: 5px;
+            border-radius: 14px;
+            margin-bottom: 25px;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .tab-btn {
+            flex: 1;
+            padding: 10px;
+            border: none;
+            background: transparent;
+            color: #94a3b8;
+            font-weight: 600;
+            font-size: 15px;
+            border-radius: 10px;
             cursor: pointer;
-            border-bottom: 2px solid transparent;
             transition: 0.3s;
         }
+
         .tab-btn.active {
-            color: var(--primary-cyan);
-            border-bottom: 2px solid var(--primary-cyan);
+            background: #38bdf8;
+            color: #020617;
+            box-shadow: 0 4px 12px rgba(56, 189, 248, 0.3);
         }
+
         .form-box {
             display: none;
-            margin-top: 25px;
-            text-align: left;
         }
+
         .form-box.active {
             display: block;
+        }
+
+        .input-group {
+            margin-bottom: 18px;
+        }
+
+        .input-group label {
+            display: block;
+            font-size: 13px;
+            font-weight: 600;
+            color: #cbd5e1;
+            margin-bottom: 8px;
+        }
+
+        .custom-input {
+            width: 100%;
+            padding: 14px 18px;
+            background: rgba(2, 6, 23, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50px;
+            color: #fff;
+            font-size: 14px;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        .custom-input:focus {
+            border-color: #38bdf8;
+            box-shadow: 0 0 12px rgba(56, 189, 248, 0.25);
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, #0284c7, #38bdf8);
+            border: none;
+            border-radius: 50px;
+            color: #fff;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.3s;
+            margin-top: 10px;
+            box-shadow: 0 8px 20px rgba(56, 189, 248, 0.25);
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            opacity: 0.95;
+        }
+
+        .btn-google {
+            width: 100%;
+            padding: 14px;
+            background: #2563eb;
+            border: none;
+            border-radius: 50px;
+            color: #fff;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 15px;
+            transition: 0.3s;
+        }
+
+        .btn-google:hover {
+            background: #1d4ed8;
+            transform: translateY(-2px);
+        }
+
+        .divider {
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: #64748b;
+            font-size: 12px;
+            margin: 20px 0;
+        }
+
+        .divider::before, .divider::after {
+            content: '';
+            flex: 1;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .divider::before { margin-right: 10px; }
+        .divider::after { margin-left: 10px; }
+
+        .remember-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 13px;
+            color: #94a3b8;
+            margin-bottom: 15px;
+            padding: 0 5px;
+        }
+
+        .remember-row a {
+            color: #38bdf8;
+            text-decoration: none;
         }
     </style>
 </head>
 <body>
 
-    <!-- Navbar -->
+    <!-- Header / Navbar -->
     <nav class="navbar">
         <a href="index.html" class="logo" style="text-decoration: none;">
             <i class="fa-solid fa-rocket"></i> Raj Social Panel
@@ -49,67 +230,96 @@
         </div>
     </nav>
 
+    <!-- Top Hero Header (Inspired by SMMPARK) -->
+    <div class="hero-header">
+        <div class="badge-pill">
+            <i class="fa-solid fa-rocket"></i> #1 Trusted SMM Panel
+        </div>
+        <h1 class="main-title">RAJ SOCIAL PANEL</h1>
+        <div class="sub-title">Best SMM Panel for Resellers | Fast, Cheap & Reliable</div>
+        <p class="desc-text">Grow faster. Get premium quality social media services trusted by thousands.</p>
+    </div>
+
     <!-- Auth Card -->
-    <div class="auth-container">
-        <div class="glass-card">
-            <!-- Tabs -->
-            <div style="display: flex; justify-content: center; gap: 20px; border-bottom: 1px solid var(--border-color);">
-                <button class="tab-btn active" onclick="switchTab('login')">Login</button>
-                <button class="tab-btn" onclick="switchTab('register')">Register</button>
+    <div class="auth-card-wrapper">
+        <div class="custom-card">
+            
+            <!-- Tab Switcher -->
+            <div class="tab-group">
+                <button class="tab-btn active" onclick="switchTab('login')">Sign In</button>
+                <button class="tab-btn" onclick="switchTab('register')">Sign Up</button>
             </div>
 
             <!-- Login Form -->
             <form id="loginForm" class="form-box active">
-                <h3 style="margin-bottom: 15px; color: var(--primary-cyan);">Welcome Back</h3>
-                <div>
+                <div class="input-group">
                     <label>Email Address</label>
-                    <input type="email" id="loginEmail" class="form-control" placeholder="enter your email" required>
+                    <input type="email" id="loginEmail" class="custom-input" placeholder="Enter your email" required>
                 </div>
-                <div>
+                
+                <div class="input-group">
                     <label>Password</label>
-                    <input type="password" id="loginPassword" class="form-control" placeholder="••••••••" required>
+                    <input type="password" id="loginPassword" class="custom-input" placeholder="••••••••" required>
                 </div>
-                <div style="text-align: right; margin-bottom: 15px;">
-                    <a href="#" onclick="switchTab('forgot')" style="color: var(--primary-cyan); font-size: 13px; text-decoration: none;">Forgot Password?</a>
+
+                <div class="remember-row">
+                    <label style="cursor: pointer; display: flex; align-items: center; gap: 6px;">
+                        <input type="checkbox" style="accent-color: #38bdf8;"> Remember me
+                    </label>
+                    <a href="#" onclick="switchTab('forgot')">Password Lost?</a>
                 </div>
-                <button type="submit" class="btn btn-primary" style="width: 100%;">Login to Dashboard</button>
+
+                <button type="submit" class="btn-submit">Sign In <i class="fa-solid fa-arrow-right-to-bracket" style="margin-left: 6px;"></i></button>
             </form>
 
             <!-- Register Form -->
             <form id="registerForm" class="form-box">
-                <h3 style="margin-bottom: 15px; color: var(--primary-cyan);">Create Account</h3>
-                <div>
+                <div class="input-group">
                     <label>Full Name</label>
-                    <input type="text" id="regName" class="form-control" placeholder="MD ROCKY" required>
+                    <input type="text" id="regName" class="custom-input" placeholder="MD ROCKY" required>
                 </div>
-                <div>
+
+                <div class="input-group">
                     <label>Email Address</label>
-                    <input type="email" id="regEmail" class="form-control" placeholder="name@example.com" required>
+                    <input type="email" id="regEmail" class="custom-input" placeholder="name@example.com" required>
                 </div>
-                <div>
+
+                <div class="input-group">
                     <label>Password</label>
-                    <input type="password" id="regPassword" class="form-control" placeholder="••••••••" required>
+                    <input type="password" id="regPassword" class="custom-input" placeholder="••••••••" required>
                 </div>
-                <button type="submit" class="btn btn-primary" style="width: 100%;">Register Account</button>
+
+                <button type="submit" class="btn-submit">Create Account</button>
             </form>
 
             <!-- Forgot Password Form -->
             <form id="forgotForm" class="form-box">
-                <h3 style="margin-bottom: 15px; color: var(--primary-cyan);">Reset Password</h3>
-                <p style="font-size: 13px; color: var(--text-sub); margin-bottom: 15px;">Enter your registered email address to receive a password reset link.</p>
-                <div>
+                <div class="input-group">
                     <label>Email Address</label>
-                    <input type="email" id="forgotEmail" class="form-control" placeholder="name@example.com" required>
+                    <input type="email" id="forgotEmail" class="custom-input" placeholder="name@example.com" required>
                 </div>
-                <button type="submit" class="btn btn-primary" style="width: 100%;">Send Reset Link</button>
+                <button type="submit" class="btn-submit">Send Reset Link</button>
                 <div style="text-align: center; margin-top: 15px;">
-                    <a href="#" onclick="switchTab('login')" style="color: var(--text-sub); font-size: 13px; text-decoration: none;">Back to Login</a>
+                    <a href="#" onclick="switchTab('login')" style="color: #94a3b8; font-size: 13px; text-decoration: none;">Back to Sign In</a>
                 </div>
             </form>
+
+            <div class="divider">OR</div>
+
+            <!-- Google Sign-In Button -->
+            <button type="button" id="googleLoginBtn" class="btn-google">
+                <i class="fa-brands fa-google" style="font-size: 18px;"></i> Signin with Google
+            </button>
+
         </div>
     </div>
 
-    <!-- JS for Tab Switching -->
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/919000000000" target="_blank" style="position: fixed; bottom: 25px; right: 25px; background: #25d366; color: white; width: 55px; height: 55px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 28px; box-shadow: 0 4px 15px rgba(0,0,0,0.4); text-decoration: none; z-index: 1000;">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <!-- Tab Navigation JS -->
     <script>
         function switchTab(tabName) {
             document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
@@ -127,7 +337,7 @@
         }
     </script>
 
-    <!-- Connect Firebase Auth Logic -->
+    <!-- Connect Firebase App Logic -->
     <script type="module" src="app.js"></script>
 
 </body>
