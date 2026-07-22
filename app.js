@@ -3,13 +3,47 @@ import {
     createUserWithEmailAndPassword, 
     signInWithEmailAndPassword, 
     sendPasswordResetEmail,
-    onAuthStateChanged 
+    GoogleAuthProvider,
+    signInWithPopup
 } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
 import { 
     doc, setDoc, getDoc 
 } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
-// Register User
+// Google Auth Provider
+const googleProvider = new GoogleAuthProvider();
+
+// Google Sign In
+const googleLoginBtn = document.getElementById('googleLoginBtn');
+if (googleLoginBtn) {
+    googleLoginBtn.addEventListener('click', async () => {
+        try {
+            const result = await signInWithPopup(auth, googleProvider);
+            const user = result.user;
+
+            // Check if user exists in Firestore, if not create doc
+            const userRef = doc(db, "users", user.uid);
+            const docSnap = await getDoc(userRef);
+
+            if (!docSnap.exists()) {
+                await setDoc(userRef, {
+                    name: user.displayName || "Google User",
+                    email: user.email,
+                    balance: 0.00,
+                    role: "user",
+                    createdAt: new Date()
+                });
+            }
+
+            alert("Google Sign-In successful!");
+            window.location.href = "dashboard.html";
+        } catch (error) {
+            alert("Google Sign-In Error: " + error.message);
+        }
+    });
+}
+
+// Register User (Email/Password)
 const registerForm = document.getElementById('registerForm');
 if (registerForm) {
     registerForm.addEventListener('submit', async (e) => {
@@ -22,7 +56,6 @@ if (registerForm) {
             const userCredential = await createUserWithEmailAndPassword(auth, email, password);
             const user = userCredential.user;
 
-            // Save user profile in Firestore
             await setDoc(doc(db, "users", user.uid), {
                 name: name,
                 email: email,
@@ -31,7 +64,7 @@ if (registerForm) {
                 createdAt: new Date()
             });
 
-            alert("Registration successful! Redirecting to Dashboard...");
+            alert("Registration successful!");
             window.location.href = "dashboard.html";
         } catch (error) {
             alert(error.message);
@@ -39,7 +72,7 @@ if (registerForm) {
     });
 }
 
-// Login User
+// Login User (Email/Password)
 const loginForm = document.getElementById('loginForm');
 if (loginForm) {
     loginForm.addEventListener('submit', async (e) => {
@@ -66,7 +99,7 @@ if (forgotForm) {
 
         try {
             await sendPasswordResetEmail(auth, email);
-            alert("Password reset email sent!");
+            alert("Password reset email sent to your inbox!");
         } catch (error) {
             alert(error.message);
         }
