@@ -5,136 +5,429 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Raj Social Panel - Premium SMM Services</title>
     <link rel="stylesheet" href="style.css">
-    <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: radial-gradient(circle at top center, #0f172a 0%, #020617 100%);
+            color: #f8fafc;
+            min-height: 100vh;
+        }
+
+        .hero-header {
+            text-align: center;
+            padding: 40px 20px 10px;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .badge-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(16, 185, 129, 0.15);
+            border: 1px solid rgba(16, 185, 129, 0.4);
+            color: #10b981;
+            padding: 8px 18px;
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .main-title {
+            font-size: 38px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            color: #38bdf8;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+        }
+
+        .sub-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #e2e8f0;
+            margin-bottom: 10px;
+        }
+
+        .desc-text {
+            font-size: 14px;
+            color: #94a3b8;
+            line-height: 1.6;
+        }
+
+        .auth-card-wrapper {
+            max-width: 440px;
+            width: 90%;
+            margin: 20px auto 40px;
+        }
+
+        .custom-card {
+            background: rgba(15, 23, 42, 0.75);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 32px 28px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+        }
+
+        .tab-group {
+            display: flex;
+            background: rgba(2, 6, 23, 0.6);
+            padding: 5px;
+            border-radius: 14px;
+            margin-bottom: 25px;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .tab-btn {
+            flex: 1;
+            padding: 10px;
+            border: none;
+            background: transparent;
+            color: #94a3b8;
+            font-weight: 600;
+            font-size: 15px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .tab-btn.active {
+            background: #38bdf8;
+            color: #020617;
+            box-shadow: 0 4px 12px rgba(56, 189, 248, 0.3);
+        }
+
+        .form-box {
+            display: none;
+        }
+
+        .form-box.active {
+            display: block;
+        }
+
+        .input-group {
+            margin-bottom: 18px;
+        }
+
+        .input-group label {
+            display: block;
+            font-size: 13px;
+            font-weight: 600;
+            color: #cbd5e1;
+            margin-bottom: 8px;
+        }
+
+        .custom-input {
+            width: 100%;
+            padding: 14px 18px;
+            background: rgba(2, 6, 23, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50px;
+            color: #fff;
+            font-size: 14px;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        .custom-input:focus {
+            border-color: #38bdf8;
+            box-shadow: 0 0 12px rgba(56, 189, 248, 0.25);
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, #0284c7, #38bdf8);
+            border: none;
+            border-radius: 50px;
+            color: #fff;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.3s;
+            margin-top: 10px;
+            box-shadow: 0 8px 20px rgba(56, 189, 248, 0.25);
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            opacity: 0.95;
+        }
+
+        .btn-google {
+            width: 100%;
+            padding: 14px;
+            background: #2563eb;
+            border: none;
+            border-radius: 50px;
+            color: #fff;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 15px;
+            transition: 0.3s;
+        }
+
+        .btn-google:hover {
+            background: #1d4ed8;
+            transform: translateY(-2px);
+        }
+
+        .divider {
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: #64748b;
+            font-size: 12px;
+            margin: 20px 0;
+        }
+
+        .divider::before, .divider::after {
+            content: '';
+            flex: 1;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .divider::before { margin-right: 10px; }
+        .divider::after { margin-left: 10px; }
+
+        .remember-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 13px;
+            color: #94a3b8;
+            margin-bottom: 15px;
+            padding: 0 5px;
+        }
+
+        .remember-row a {
+            color: #38bdf8;
+            text-decoration: none;
+        }
+    </style>
 </head>
 <body>
 
-    <!-- Navbar -->
+    <!-- Header / Navbar -->
     <nav class="navbar">
-        <div class="logo">
+        <a href="index.html" class="logo" style="text-decoration: none;">
             <i class="fa-solid fa-rocket"></i> Raj Social Panel
-        </div>
+        </a>
         <ul class="nav-links">
             <li><a href="#home">Home</a></li>
             <li><a href="#services">Services</a></li>
             <li><a href="#why-us">Why Us</a></li>
             <li><a href="#faq">FAQ</a></li>
         </ul>
-        <div>
-            <a href="auth.html" class="btn btn-primary">Login / Register</a>
-        </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section id="home" style="padding: 80px 8%; text-align: center;">
-        <div class="glass-card" style="max-width: 900px; margin: 0 auto; padding: 50px 30px;">
-            <h1 style="font-size: 42px; margin-bottom: 20px; color: var(--primary-cyan);">
-                Boost Your Social Media Presence Instantly
-            </h1>
-            <p style="font-size: 18px; color: var(--text-sub); margin-bottom: 30px; line-height: 1.6;">
-                Get real, high-quality Followers, Likes, Views, and Subscribers at the cheapest market rate with 24/7 instant automated delivery.
-            </p>
-            <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
-                <a href="auth.html" class="btn btn-primary" style="font-size: 18px; padding: 14px 32px;">Get Started Now</a>
-                <a href="#services" class="btn" style="background: rgba(255,255,255,0.1); color: #fff; font-size: 18px; padding: 14px 32px;">View Services</a>
+    <!-- MAIN HERO SECTION (DESIGN FROM RIGHT IMAGE) -->
+    <section id="home">
+        <div class="hero-header">
+            <div class="badge-pill">
+                <i class="fa-solid fa-rocket"></i> #1 Trusted SMM Panel
+            </div>
+            <h1 class="main-title">RAJ SOCIAL PANEL</h1>
+            <div class="sub-title">Best SMM Panel for Resellers | Fast, Cheap & Reliable</div>
+            <p class="desc-text">Grow faster. Get premium quality social media services trusted by thousands.</p>
+        </div>
+
+        <!-- Auth / Login Card Directly on Homepage -->
+        <div class="auth-card-wrapper">
+            <div class="custom-card">
+                
+                <!-- Tab Switcher -->
+                <div class="tab-group">
+                    <button class="tab-btn active" onclick="switchTab('login')">Sign In</button>
+                    <button class="tab-btn" onclick="switchTab('register')">Sign Up</button>
+                </div>
+
+                <!-- Login Form -->
+                <form id="loginForm" class="form-box active">
+                    <div class="input-group">
+                        <label>Email Address</label>
+                        <input type="email" id="loginEmail" class="custom-input" placeholder="Enter your email" required>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label>Password</label>
+                        <input type="password" id="loginPassword" class="custom-input" placeholder="••••••••" required>
+                    </div>
+
+                    <div class="remember-row">
+                        <label style="cursor: pointer; display: flex; align-items: center; gap: 6px;">
+                            <input type="checkbox" style="accent-color: #38bdf8;"> Remember me
+                        </label>
+                        <a href="#" onclick="switchTab('forgot')">Password Lost?</a>
+                    </div>
+
+                    <button type="submit" class="btn-submit">Sign In <i class="fa-solid fa-arrow-right-to-bracket" style="margin-left: 6px;"></i></button>
+                </form>
+
+                <!-- Register Form -->
+                <form id="registerForm" class="form-box">
+                    <div class="input-group">
+                        <label>Full Name</label>
+                        <input type="text" id="regName" class="custom-input" placeholder="MD ROCKY" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label>Email Address</label>
+                        <input type="email" id="regEmail" class="custom-input" placeholder="name@example.com" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label>Password</label>
+                        <input type="password" id="regPassword" class="custom-input" placeholder="••••••••" required>
+                    </div>
+
+                    <button type="submit" class="btn-submit">Create Account</button>
+                </form>
+
+                <!-- Forgot Password Form -->
+                <form id="forgotForm" class="form-box">
+                    <div class="input-group">
+                        <label>Email Address</label>
+                        <input type="email" id="forgotEmail" class="custom-input" placeholder="name@example.com" required>
+                    </div>
+                    <button type="submit" class="btn-submit">Send Reset Link</button>
+                    <div style="text-align: center; margin-top: 15px;">
+                        <a href="#" onclick="switchTab('login')" style="color: #94a3b8; font-size: 13px; text-decoration: none;">Back to Sign In</a>
+                    </div>
+                </form>
+
+                <div class="divider">OR</div>
+
+                <!-- Google Sign-In Button -->
+                <button type="button" id="googleLoginBtn" class="btn-google">
+                    <i class="fa-brands fa-google" style="font-size: 18px;"></i> Signin with Google
+                </button>
+
             </div>
         </div>
     </section>
 
     <!-- Customer Statistics -->
-    <section style="padding: 40px 8%;">
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; text-align: center;">
+    <section style="padding: 30px 8%;">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; text-align: center;">
             <div class="glass-card">
-                <h2 style="font-size: 36px; color: var(--primary-cyan);">50K+</h2>
+                <h2 style="font-size: 32px; color: var(--primary-cyan);">50K+</h2>
                 <p style="color: var(--text-sub);">Completed Orders</p>
             </div>
             <div class="glass-card">
-                <h2 style="font-size: 36px; color: var(--primary-cyan);">10K+</h2>
+                <h2 style="font-size: 32px; color: var(--primary-cyan);">10K+</h2>
                 <p style="color: var(--text-sub);">Happy Clients</p>
             </div>
             <div class="glass-card">
-                <h2 style="font-size: 36px; color: var(--primary-cyan);">99.9%</h2>
+                <h2 style="font-size: 32px; color: var(--primary-cyan);">99.9%</h2>
                 <p style="color: var(--text-sub);">Success Rate</p>
             </div>
             <div class="glass-card">
-                <h2 style="font-size: 36px; color: var(--primary-cyan);">24/7</h2>
+                <h2 style="font-size: 32px; color: var(--primary-cyan);">24/7</h2>
                 <p style="color: var(--text-sub);">Instant Support</p>
             </div>
         </div>
     </section>
 
     <!-- Services Section -->
-    <section id="services" style="padding: 60px 8%;">
-        <h2 style="text-align: center; font-size: 32px; margin-bottom: 40px; color: var(--primary-cyan);">Our Top Services</h2>
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px;">
+    <section id="services" style="padding: 50px 8%;">
+        <h2 style="text-align: center; font-size: 30px; margin-bottom: 35px; color: var(--primary-cyan);">Our Top Services</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px;">
             <div class="glass-card" style="text-align: center;">
-                <i class="fa-brands fa-facebook" style="font-size: 45px; color: #1877f2; margin-bottom: 15px;"></i>
+                <i class="fa-brands fa-facebook" style="font-size: 40px; color: #1877f2; margin-bottom: 12px;"></i>
                 <h3>Facebook Growth</h3>
-                <p style="color: var(--text-sub); margin: 10px 0 20px;">Page Likes, Profile Followers, Group Members & Post Reactions.</p>
-                <a href="auth.html" class="btn btn-primary">Order Now</a>
+                <p style="color: var(--text-sub); margin: 10px 0 15px; font-size: 14px;">Page Likes, Profile Followers, Group Members & Post Reactions.</p>
             </div>
             <div class="glass-card" style="text-align: center;">
-                <i class="fa-brands fa-instagram" style="font-size: 45px; color: #e1306c; margin-bottom: 15px;"></i>
+                <i class="fa-brands fa-instagram" style="font-size: 40px; color: #e1306c; margin-bottom: 12px;"></i>
                 <h3>Instagram Services</h3>
-                <p style="color: var(--text-sub); margin: 10px 0 20px;">Real Instagram Followers, High Quality Likes & Reel Views.</p>
-                <a href="auth.html" class="btn btn-primary">Order Now</a>
+                <p style="color: var(--text-sub); margin: 10px 0 15px; font-size: 14px;">Real Instagram Followers, High Quality Likes & Reel Views.</p>
             </div>
             <div class="glass-card" style="text-align: center;">
-                <i class="fa-brands fa-youtube" style="font-size: 45px; color: #ff0000; margin-bottom: 15px;"></i>
+                <i class="fa-brands fa-youtube" style="font-size: 40px; color: #ff0000; margin-bottom: 12px;"></i>
                 <h3>YouTube Boosting</h3>
-                <p style="color: var(--text-sub); margin: 10px 0 20px;">Organic Subscribers, High Retention Views & Watch Time.</p>
-                <a href="auth.html" class="btn btn-primary">Order Now</a>
+                <p style="color: var(--text-sub); margin: 10px 0 15px; font-size: 14px;">Organic Subscribers, High Retention Views & Watch Time.</p>
             </div>
         </div>
     </section>
 
     <!-- Why Choose Us -->
-    <section id="why-us" style="padding: 60px 8%;">
-        <h2 style="text-align: center; font-size: 32px; margin-bottom: 40px; color: var(--primary-cyan);">Why Choose Raj Social Panel?</h2>
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+    <section id="why-us" style="padding: 50px 8%;">
+        <h2 style="text-align: center; font-size: 30px; margin-bottom: 35px; color: var(--primary-cyan);">Why Choose Raj Social Panel?</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px;">
             <div class="glass-card">
-                <i class="fa-solid fa-bolt" style="font-size: 30px; color: #f59e0b; margin-bottom: 10px;"></i>
+                <i class="fa-solid fa-bolt" style="font-size: 28px; color: #f59e0b; margin-bottom: 10px;"></i>
                 <h4>Super Fast Delivery</h4>
-                <p style="color: var(--text-sub); font-size: 14px; margin-top: 8px;">Automated system starts working right after order placement.</p>
+                <p style="color: var(--text-sub); font-size: 13px; margin-top: 6px;">Automated system starts working right after order placement.</p>
             </div>
             <div class="glass-card">
-                <i class="fa-solid fa-shield-halved" style="font-size: 30px; color: #10b981; margin-bottom: 10px;"></i>
+                <i class="fa-solid fa-shield-halved" style="font-size: 28px; color: #10b981; margin-bottom: 10px;"></i>
                 <h4>100% Safe & Secure</h4>
-                <p style="color: var(--text-sub); font-size: 14px; margin-top: 8px;">We never ask for your passwords or private account access.</p>
+                <p style="color: var(--text-sub); font-size: 13px; margin-top: 6px;">We never ask for your passwords or private account access.</p>
             </div>
             <div class="glass-card">
-                <i class="fa-solid fa-tags" style="font-size: 30px; color: #ec4899; margin-bottom: 10px;"></i>
+                <i class="fa-solid fa-tags" style="font-size: 28px; color: #ec4899; margin-bottom: 10px;"></i>
                 <h4>Unbeatable Prices</h4>
-                <p style="color: var(--text-sub); font-size: 14px; margin-top: 8px;">Cheapest prices tailored for resellers and content creators.</p>
+                <p style="color: var(--text-sub); font-size: 13px; margin-top: 6px;">Cheapest prices tailored for resellers and content creators.</p>
             </div>
         </div>
     </section>
 
     <!-- FAQ Section -->
-    <section id="faq" style="padding: 60px 8%;">
-        <h2 style="text-align: center; font-size: 32px; margin-bottom: 40px; color: var(--primary-cyan);">Frequently Asked Questions</h2>
+    <section id="faq" style="padding: 50px 8%;">
+        <h2 style="text-align: center; font-size: 30px; margin-bottom: 35px; color: var(--primary-cyan);">Frequently Asked Questions</h2>
         <div style="max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: 15px;">
             <div class="glass-card">
                 <h4>Q: Is it safe for my social media account?</h4>
-                <p style="color: var(--text-sub); margin-top: 8px;">Yes, completely safe! All services comply with platform safety standards.</p>
+                <p style="color: var(--text-sub); margin-top: 8px; font-size: 14px;">Yes, completely safe! All services comply with platform safety standards.</p>
             </div>
             <div class="glass-card">
                 <h4>Q: How long does an order take to complete?</h4>
-                <p style="color: var(--text-sub); margin-top: 8px;">Orders start within 0-15 minutes automatically depending on service quantity.</p>
+                <p style="color: var(--text-sub); margin-top: 8px; font-size: 14px;">Orders start within 0-15 minutes automatically depending on service quantity.</p>
             </div>
         </div>
     </section>
 
     <!-- Floating WhatsApp Button -->
-    <a href="https://wa.me/919000000000" target="_blank" style="position: fixed; bottom: 25px; right: 25px; background: #25d366; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 32px; box-shadow: 0 4px 15px rgba(0,0,0,0.4); text-decoration: none; z-index: 1000;">
+    <a href="https://wa.me/919000000000" target="_blank" style="position: fixed; bottom: 25px; right: 25px; background: #25d366; color: white; width: 55px; height: 55px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 28px; box-shadow: 0 4px 15px rgba(0,0,0,0.4); text-decoration: none; z-index: 1000;">
         <i class="fa-brands fa-whatsapp"></i>
     </a>
 
     <!-- Footer -->
-    <footer style="text-align: center; padding: 30px; border-top: 1px solid var(--border-color); color: var(--text-sub); margin-top: 40px;">
+    <footer style="text-align: center; padding: 25px; border-top: 1px solid var(--border-color); color: var(--text-sub); margin-top: 30px; font-size: 14px;">
         <p>© 2026 Raj Social Panel | Powered by <strong>MD ROCKY</strong>. All Rights Reserved.</p>
     </footer>
+
+    <!-- Tab Switching JS -->
+    <script>
+        function switchTab(tabName) {
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.form-box').forEach(form => form.classList.remove('active'));
+
+            if(tabName === 'login') {
+                document.querySelectorAll('.tab-btn')[0].classList.add('active');
+                document.getElementById('loginForm').classList.add('active');
+            } else if(tabName === 'register') {
+                document.querySelectorAll('.tab-btn')[1].classList.add('active');
+                document.getElementById('registerForm').classList.add('active');
+            } else if(tabName === 'forgot') {
+                document.getElementById('forgotForm').classList.add('active');
+            }
+        }
+    </script>
+
+    <!-- Connect Firebase Logic -->
+    <script type="module" src="app.js"></script>
 
 </body>
 </html>
