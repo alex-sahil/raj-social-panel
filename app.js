@@ -10,10 +10,10 @@ import {
     doc, setDoc, getDoc 
 } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
-// Google Auth Provider
+// Google Auth Provider Setup
 const googleProvider = new GoogleAuthProvider();
 
-// Google Sign In
+// Google Sign In Button Event
 const googleLoginBtn = document.getElementById('googleLoginBtn');
 if (googleLoginBtn) {
     googleLoginBtn.addEventListener('click', async () => {
@@ -21,7 +21,7 @@ if (googleLoginBtn) {
             const result = await signInWithPopup(auth, googleProvider);
             const user = result.user;
 
-            // Check if user exists in Firestore, if not create doc
+            // Firestore Database Check & Save
             const userRef = doc(db, "users", user.uid);
             const docSnap = await getDoc(userRef);
 
@@ -35,9 +35,10 @@ if (googleLoginBtn) {
                 });
             }
 
-            alert("Google Sign-In successful!");
+            alert("Google Sign-In Successful!");
             window.location.href = "dashboard.html";
         } catch (error) {
+            console.error("Google Auth Error:", error);
             alert("Google Sign-In Error: " + error.message);
         }
     });
@@ -99,7 +100,7 @@ if (forgotForm) {
 
         try {
             await sendPasswordResetEmail(auth, email);
-            alert("Password reset email sent to your inbox!");
+            alert("Password reset email sent!");
         } catch (error) {
             alert(error.message);
         }
