@@ -4,322 +4,141 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard - Raj Social Panel</title>
-    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
     
     <style>
-        body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            background: radial-gradient(circle at top center, #0f172a 0%, #020617 100%);
-            color: #f8fafc;
-            min-height: 100vh;
-            padding-bottom: 50px;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; }
+        body { background: #020617; color: #f8fafc; min-height: 100vh; padding-bottom: 80px; }
 
+        /* Top Navbar */
         .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 18px 8%;
-            background: rgba(15, 23, 42, 0.8);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            position: sticky;
-            top: 0;
-            z-index: 100;
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 16px 6%; background: rgba(15, 23, 42, 0.9);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08); backdrop-filter: blur(10px);
+            position: sticky; top: 0; z-index: 100;
+        }
+        .logo { font-size: 20px; font-weight: 800; color: #38bdf8; text-decoration: none; }
+        .user-info { display: flex; align-items: center; gap: 15px; }
+        .balance-badge { background: rgba(56, 189, 248, 0.15); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.3); padding: 6px 14px; border-radius: 50px; font-weight: 700; font-size: 14px; }
+        .btn-logout { background: #ef4444; color: #fff; border: none; padding: 6px 12px; border-radius: 8px; cursor: pointer; font-weight: 600; font-size: 13px; }
+
+        /* Main Container */
+        .container { max-width: 600px; margin: 25px auto; padding: 0 16px; }
+
+        .card {
+            background: rgba(15, 23, 42, 0.85); border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px; padding: 24px; box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+            margin-bottom: 25px;
         }
 
-        .user-nav-info {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
+        .card-title { font-size: 18px; font-weight: 700; color: #38bdf8; margin-bottom: 18px; display: flex; align-items: center; gap: 8px; }
 
-        .balance-badge {
-            background: rgba(16, 185, 129, 0.15);
-            border: 1px solid rgba(16, 185, 129, 0.4);
-            color: #10b981;
-            padding: 6px 14px;
-            border-radius: 50px;
-            font-weight: 700;
-            font-size: 14px;
-        }
-
-        .btn-logout {
-            background: rgba(239, 68, 68, 0.2);
-            border: 1px solid rgba(239, 68, 68, 0.4);
-            color: #f87171;
-            padding: 8px 16px;
-            border-radius: 50px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-
-        .btn-logout:hover {
-            background: #ef4444;
-            color: #fff;
-        }
-
-        .dashboard-container {
-            max-width: 900px;
-            margin: 40px auto;
-            padding: 0 20px;
-        }
-
-        .welcome-card {
-            background: linear-gradient(135deg, rgba(56, 189, 248, 0.1), rgba(2, 132, 199, 0.1));
-            border: 1px solid rgba(56, 189, 248, 0.3);
-            border-radius: 20px;
-            padding: 25px;
-            margin-bottom: 30px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 15px;
-        }
-
-        .order-card {
-            background: rgba(15, 23, 42, 0.75);
-            backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
-            padding: 30px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-group label {
-            display: block;
-            font-size: 14px;
-            font-weight: 600;
-            color: #cbd5e1;
-            margin-bottom: 8px;
-        }
+        .form-group { margin-bottom: 16px; }
+        .form-group label { display: block; font-size: 13px; font-weight: 600; color: #cbd5e1; margin-bottom: 6px; }
 
         .custom-select, .custom-input {
-            width: 100%;
-            padding: 14px 18px;
-            background: rgba(2, 6, 23, 0.7);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 12px;
-            color: #fff;
-            font-size: 14px;
-            outline: none;
-            transition: 0.3s;
+            width: 100%; padding: 12px 16px; background: rgba(2, 6, 23, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 12px;
+            color: #fff; font-size: 14px; outline: none; transition: 0.3s;
         }
+        .custom-select:focus, .custom-input:focus { border-color: #38bdf8; box-shadow: 0 0 10px rgba(56, 189, 248, 0.2); }
 
-        .custom-select option {
-            background: #0f172a;
-            color: #fff;
-        }
-
-        .custom-select:focus, .custom-input:focus {
-            border-color: #38bdf8;
-            box-shadow: 0 0 12px rgba(56, 189, 248, 0.25);
-        }
-
-        .charge-box {
-            background: rgba(2, 6, 23, 0.5);
-            border: 1px dashed rgba(255, 255, 255, 0.15);
-            border-radius: 12px;
-            padding: 15px;
-            margin-bottom: 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+        .charge-box { background: rgba(2, 6, 23, 0.5); padding: 12px; border-radius: 10px; border: 1px dashed rgba(56, 189, 248, 0.3); font-weight: 700; color: #38bdf8; font-size: 15px; margin: 15px 0; }
 
         .btn-order {
-            width: 100%;
-            padding: 15px;
-            background: linear-gradient(135deg, #0284c7, #38bdf8);
-            border: none;
-            border-radius: 50px;
-            color: #fff;
-            font-size: 16px;
-            font-weight: 700;
-            cursor: pointer;
-            transition: 0.3s;
-            box-shadow: 0 8px 20px rgba(56, 189, 248, 0.25);
+            width: 100%; padding: 14px; background: linear-gradient(135deg, #0284c7, #38bdf8);
+            border: none; border-radius: 50px; color: #fff; font-size: 16px; font-weight: 700;
+            cursor: pointer; transition: 0.3s; box-shadow: 0 8px 20px rgba(56, 189, 248, 0.25);
         }
+        .btn-order:hover { transform: translateY(-2px); opacity: 0.95; }
 
-        .btn-order:hover {
-            transform: translateY(-2px);
-            opacity: 0.95;
-        }
+        /* Order Table */
+        table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+        th, td { padding: 10px; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.08); font-size: 13px; }
+        th { color: #94a3b8; font-weight: 600; }
+        .status-badge { padding: 4px 8px; border-radius: 6px; font-size: 11px; font-weight: 700; display: inline-block; }
+        .status-pending { background: rgba(234, 179, 8, 0.2); color: #eab308; }
+        .status-completed { background: rgba(34, 197, 94, 0.2); color: #22c55e; }
     </style>
 </head>
 <body>
 
-    <!-- Header / Navbar -->
+    <!-- Navbar -->
     <nav class="navbar">
-        <a href="dashboard.html" class="logo" style="text-decoration: none; font-size: 20px; font-weight: 800; color: #38bdf8;">
-            <i class="fa-solid fa-rocket"></i> Raj Social Panel
-        </a>
-        <div class="user-nav-info">
-            <span class="balance-badge"><i class="fa-solid fa-wallet"></i> ₹<span id="userBalance">0.00</span></span>
-            <button class="btn-logout" id="logoutBtn"><i class="fa-solid fa-right-from-bracket"></i> Logout</button>
+        <a href="dashboard.html" class="logo"><i class="fa-solid fa-rocket"></i> Raj Social Panel</a>
+        <div class="user-info">
+            <div class="balance-badge"><i class="fa-solid fa-wallet"></i> ₹<span id="userBalance">0.00</span></div>
+            <button id="logoutBtn" class="btn-logout"><i class="fa-solid fa-right-from-bracket"></i></button>
         </div>
     </nav>
 
-    <!-- Main Dashboard -->
-    <div class="dashboard-container">
-        
-        <!-- Welcome Card -->
-        <div class="welcome-card">
-            <div>
-                <h2 style="font-size: 22px; margin-bottom: 5px;">Welcome back, <span id="userName" style="color: #38bdf8;">User</span>! 👋</h2>
-                <p style="color: #94a3b8; font-size: 14px;">Select your desired service and boost your social media today.</p>
-            </div>
-            <a href="https://wa.me/919000000000" target="_blank" style="background: #25d366; color: #fff; padding: 10px 18px; border-radius: 50px; text-decoration: none; font-weight: 600; font-size: 14px; display: inline-flex; align-items: center; gap: 8px;">
-                <i class="fa-brands fa-whatsapp"></i> Add Balance (WhatsApp)
-            </a>
-        </div>
-
-        <!-- New Order Form -->
-        <div class="order-card">
-            <h3 style="font-size: 20px; margin-bottom: 20px; color: #38bdf8; display: flex; align-items: center; gap: 10px;">
-                <i class="fa-solid fa-cart-plus"></i> Place New Order
-            </h3>
-
+    <div class="container">
+        <!-- New Order Card -->
+        <div class="card">
+            <h2 class="card-title"><i class="fa-solid fa-cart-plus"></i> New Order</h2>
             <form id="orderForm">
-                <!-- Category Selection -->
+                
                 <div class="form-group">
                     <label>Category</label>
                     <select id="categorySelect" class="custom-select" required>
-                        <option value="">-- Choose Category --</option>
-                        <option value="facebook">Facebook Services</option>
-                        <option value="instagram">Instagram Services</option>
-                        <option value="youtube">YouTube Services</option>
+                        <option value="">Select Category...</option>
                     </select>
                 </div>
 
-                <!-- Service Selection -->
                 <div class="form-group">
                     <label>Service</label>
                     <select id="serviceSelect" class="custom-select" required>
-                        <option value="">-- Select Category First --</option>
+                        <option value="">Select Service...</option>
                     </select>
                 </div>
 
-                <!-- Link Input -->
                 <div class="form-group">
-                    <label>Link / URL</label>
-                    <input type="url" id="orderLink" class="custom-input" placeholder="https://..." required>
+                    <label>Link / Username</label>
+                    <input type="text" id="orderLink" class="custom-input" placeholder="https://instagram.com/..." required>
                 </div>
 
-                <!-- Quantity Input -->
                 <div class="form-group">
                     <label>Quantity</label>
-                    <input type="number" id="orderQuantity" class="custom-input" placeholder="e.g. 1000" min="100" required>
+                    <input type="number" id="orderQuantity" class="custom-input" placeholder="1000" min="10" required>
                 </div>
 
-                <!-- Charge Summary -->
                 <div class="charge-box">
-                    <span style="color: #94a3b8; font-size: 14px;">Total Charge:</span>
-                    <span style="font-size: 20px; font-weight: 800; color: #10b981;">₹<span id="totalCharge">0.00</span></span>
+                    Total Charge: ₹<span id="totalCharge">0.00</span>
                 </div>
 
-                <button type="submit" class="btn-order">Submit Order <i class="fa-solid fa-paper-plane" style="margin-left: 6px;"></i></button>
+                <button type="submit" class="btn-order">Submit Order</button>
             </form>
         </div>
 
+        <!-- Recent Orders Card -->
+        <div class="card">
+            <h2 class="card-title"><i class="fa-solid fa-clock-rotate-left"></i> Order History</h2>
+            <div style="overflow-x: auto;">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Service</th>
+                            <th>Qty</th>
+                            <th>Charge</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="ordersTableBody">
+                        <tr><td colspan="5" style="text-align: center; color: #94a3b8;">No orders found</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
 
-    <!-- Firebase Dashboard Script -->
-    <script type="module">
-        import { auth, db } from "./firebase-config.js";
-        import { onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
-        import { doc, getDoc } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+    <!-- Floating WhatsApp Help Button -->
+    <a href="https://wa.me/919337028344" target="_blank" style="position: fixed; bottom: 20px; right: 20px; background: #25d366; color: white; padding: 10px 18px; border-radius: 50px; display: flex; align-items: center; gap: 8px; font-weight: 700; font-size: 14px; text-decoration: none; box-shadow: 0 4px 12px rgba(0,0,0,0.4); z-index: 1000;">
+        <i class="fa-brands fa-whatsapp" style="font-size: 20px;"></i> HELP
+    </a>
 
-        // Check Auth State
-        onAuthStateChanged(auth, async (user) => {
-            if (user) {
-                // Fetch User Details from Firestore
-                const userDoc = await getDoc(doc(db, "users", user.uid));
-                if (userDoc.exists()) {
-                    const userData = userDoc.data();
-                    document.getElementById('userName').innerText = userData.name || "User";
-                    document.getElementById('userBalance').innerText = (userData.balance || 0).toFixed(2);
-                } else {
-                    document.getElementById('userName').innerText = user.displayName || "User";
-                }
-            } else {
-                // Not logged in -> Redirect to Homepage
-                window.location.href = "index.html";
-            }
-        });
-
-        // Logout
-        document.getElementById('logoutBtn').addEventListener('click', () => {
-            signOut(auth).then(() => {
-                window.location.href = "index.html";
-            });
-        });
-
-        // Demo Service Selection Logic
-        const servicesData = {
-            facebook: [
-                { id: 101, name: "Facebook Page Followers [Non-Drop] - ₹80 / 1000", rate: 80 },
-                { id: 102, name: "Facebook Post Likes - ₹30 / 1000", rate: 30 }
-            ],
-            instagram: [
-                { id: 201, name: "Instagram Real Followers - ₹90 / 1000", rate: 90 },
-                { id: 202, name: "Instagram Reel Views - ₹10 / 1000", rate: 10 }
-            ],
-            youtube: [
-                { id: 301, name: "YouTube Subscribers [Safe] - ₹450 / 1000", rate: 450 },
-                { id: 302, name: "YouTube Video Views - ₹120 / 1000", rate: 120 }
-            ]
-        };
-
-        const categorySelect = document.getElementById('categorySelect');
-        const serviceSelect = document.getElementById('serviceSelect');
-        const quantityInput = document.getElementById('orderQuantity');
-        const totalCharge = document.getElementById('totalCharge');
-
-        let currentRate = 0;
-
-        categorySelect.addEventListener('change', (e) => {
-            const cat = e.target.value;
-            serviceSelect.innerHTML = '<option value="">-- Choose Service --</option>';
-            currentRate = 0;
-            totalCharge.innerText = "0.00";
-
-            if (servicesData[cat]) {
-                servicesData[cat].forEach(s => {
-                    const opt = document.createElement('option');
-                    opt.value = s.rate;
-                    opt.innerText = s.name;
-                    serviceSelect.appendChild(opt);
-                });
-            }
-        });
-
-        serviceSelect.addEventListener('change', (e) => {
-            currentRate = parseFloat(e.target.value) || 0;
-            calculateCharge();
-        });
-
-        quantityInput.addEventListener('input', calculateCharge);
-
-        function calculateCharge() {
-            const qty = parseInt(quantityInput.value) || 0;
-            const charge = (qty / 1000) * currentRate;
-            totalCharge.innerText = charge.toFixed(2);
-        }
-
-        // Handle Order Submit
-        document.getElementById('orderForm').addEventListener('submit', (e) => {
-            e.preventDefault();
-            alert("অর্ডার সফলভাবে গ্রহণ করা হয়েছে! (পরবর্তী ধাপে আমরা ব্যাকএন্ডে অর্ডার রেকর্ড সেভ করার ফিচার যোগ করব)");
-        });
-    </script>
+    <!-- Firebase Connection -->
+    <script type="module" src="app.js"></script>
 </body>
 </html>
