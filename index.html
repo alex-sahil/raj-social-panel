@@ -23,20 +23,6 @@
             margin: 0 auto;
         }
 
-        .badge-pill {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: rgba(16, 185, 129, 0.15);
-            border: 1px solid rgba(16, 185, 129, 0.4);
-            color: #10b981;
-            padding: 8px 18px;
-            border-radius: 50px;
-            font-size: 14px;
-            font-weight: 600;
-            margin-bottom: 15px;
-        }
-
         .main-title {
             font-size: 30px;
             font-weight: 800;
@@ -221,16 +207,20 @@
 <body>
 
     <!-- Header / Navbar -->
-    <nav class="navbar">
-        <a href="index.html" class="logo" style="text-decoration: none;">
+    <nav class="navbar" style="display: flex; justify-content: space-between; align-items: center; padding: 18px 8%;">
+        <a href="index.html" class="logo" style="text-decoration: none; font-size: 20px; font-weight: 800; color: #38bdf8;">
             <i class="fa-solid fa-rocket"></i> Raj Social Panel
+        </a>
+        <!-- Telegram Support Link -->
+        <a href="https://t.me/your_telegram_channel" target="_blank" style="background: #0088cc; color: white; padding: 8px 16px; border-radius: 50px; text-decoration: none; font-size: 13px; font-weight: 600; display: flex; align-items: center; gap: 6px;">
+            <i class="fa-brands fa-telegram"></i> Join Telegram
         </a>
     </nav>
 
     <!-- MAIN HERO SECTION -->
     <section id="home">
         <div class="hero-header">
-            <h1 class="main-title" id="headerTitle">🚀 Join Raj Social Panel</h1>
+            <h1 class="main-title" id="headerTitle">RAJ SOCIAL PANEL</h1>
             <p class="desc-text" id="headerSub">🔥 Fast • 💰 Affordable • 🔐 Secure SMM Services • ⚡ Trusted 💯</p>
         </div>
 
@@ -238,14 +228,14 @@
         <div class="auth-card-wrapper">
             <div class="custom-card">
                 
-                <!-- Tab Switcher -->
+                <!-- Tab Switcher (Sign In is ACTIVE by default) -->
                 <div class="tab-group">
-                    <button class="tab-btn" onclick="switchTab('login')">Sign In</button>
-                    <button class="tab-btn active" onclick="switchTab('register')">Sign Up</button>
+                    <button class="tab-btn active" onclick="switchTab('login')">Sign In</button>
+                    <button class="tab-btn" onclick="switchTab('register')">Sign Up</button>
                 </div>
 
-                <!-- Login Form -->
-                <form id="loginForm" class="form-box">
+                <!-- Login Form (DEFAULT ACTIVE) -->
+                <form id="loginForm" class="form-box active">
                     <div class="input-group">
                         <label>Email Address</label>
                         <input type="email" id="loginEmail" class="custom-input" placeholder="Enter your email" required>
@@ -253,7 +243,7 @@
                     
                     <div class="input-group">
                         <label>Password</label>
-                        <input type="password" id="loginPassword" class="custom-input" placeholder="••••••••" required>
+                        <input type="password" id="loginPassword" class="custom-input" placeholder="Enter password" required>
                     </div>
 
                     <div class="remember-row">
@@ -266,8 +256,8 @@
                     <button type="submit" class="btn-submit">Sign In</button>
                 </form>
 
-                <!-- Register Form (EXACTLY MATCHING YOUR REQUEST) -->
-                <form id="registerForm" class="form-box active">
+                <!-- Register Form -->
+                <form id="registerForm" class="form-box">
                     <div class="input-group">
                         <label>Username</label>
                         <input type="text" id="regName" class="custom-input" placeholder="Enter username" required>
@@ -328,8 +318,8 @@
         </div>
     </section>
 
-    <!-- Floating WhatsApp Button -->
-    <a href="https://wa.me/919000000000" target="_blank" style="position: fixed; bottom: 25px; right: 25px; background: #25d366; color: white; padding: 12px 20px; border-radius: 50px; display: flex; align-items: center; gap: 8px; font-weight: 700; font-size: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.4); text-decoration: none; z-index: 1000;">
+    <!-- Floating WhatsApp Direct Inbox Button (+919337028344) -->
+    <a href="https://wa.me/919337028344" target="_blank" style="position: fixed; bottom: 25px; right: 25px; background: #25d366; color: white; padding: 12px 20px; border-radius: 50px; display: flex; align-items: center; gap: 8px; font-weight: 700; font-size: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.4); text-decoration: none; z-index: 1000;">
         <i class="fa-brands fa-whatsapp" style="font-size: 22px;"></i> HELP
     </a>
 
