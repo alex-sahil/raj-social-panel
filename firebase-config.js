@@ -1,21 +1,10 @@
-// Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-
-// Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyDwBxEiWermQ3xqZ0JN8rlKUfpLPH7zOrU",
-  authDomain: "raj-social-panel-80680.firebaseapp.com",
-  projectId: "raj-social-panel-80680",
-  storageBucket: "raj-social-panel-80680.firebasestorage.app",
-  messagingSenderId: "12577949197",
-  appId: "1:12577949197:web:f4eb59761b003dbe853744",
-  measurementId: "G-20JY74T8YW"
+  apiKey: "AIzaSyDch-jDRuW8UYVRIABFKql4kKsF88h0nRk",
+  authDomain: "raj-social-panel-48e28.firebaseapp.com",
+  projectId: "raj-social-panel-48e28",
+  storageBucket: "raj-social-panel-48e28.firebasestorage.app",
+  messagingSenderId: "283505347891",
+  appId: "1:283505347891:web:0f0f4ab54bd3e7beafc246",
+  measurementId: "G-EQ9S35X1NM"
 };
-
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
