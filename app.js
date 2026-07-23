@@ -7,7 +7,7 @@ import {
     signInWithPopup
 } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
 import { 
-    doc, setDoc, getDoc 
+    doc, setDoc, getDoc, collection, query, where, getDocs 
 } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
 // Google Auth Provider Setup
@@ -21,7 +21,6 @@ if (googleLoginBtn) {
             const result = await signInWithPopup(auth, googleProvider);
             const user = result.user;
 
-            // Firestore Database Check & Save
             const userRef = doc(db, "users", user.uid);
             const docSnap = await getDoc(userRef);
 
@@ -49,9 +48,9 @@ const registerForm = document.getElementById('registerForm');
 if (registerForm) {
     registerForm.addEventListener('submit', async (e) => {
         e.preventDefault();
-        const name = document.getElementById('regName').value;
-        const email = document.getElementById('regEmail').value;
-        const whatsapp = document.getElementById('regWhatsapp').value;
+        const name = document.getElementById('regName').value.trim();
+        const email = document.getElementById('regEmail').value.trim();
+        const whatsapp = document.getElementById('regWhatsapp').value.trim();
         const password = document.getElementById('regPassword').value;
         const confirmPassword = document.getElementById('regConfirmPassword').value;
 
@@ -81,20 +80,39 @@ if (registerForm) {
     });
 }
 
-// Login User (Email/Password)
+// Login User (Supports both Email and Username)
 const loginForm = document.getElementById('loginForm');
 if (loginForm) {
     loginForm.addEventListener('submit', async (e) => {
         e.preventDefault();
-        const email = document.getElementById('loginEmail').value;
+        let identifier = document.getElementById('loginEmail').value.trim();
         const password = document.getElementById('loginPassword').value;
 
         try {
-            await signInWithEmailAndPassword(auth, email, password);
+            let emailToUse = identifier;
+
+            // Check if input is a username (doesn't contain '@')
+            if (!identifier.includes('@')) {
+                const usersRef = collection(db, "users");
+                const q = query(usersRef, where("name", "==", identifier));
+                const querySnapshot = await getDocs(q);
+
+                if (querySnapshot.empty) {
+                    alert("এই ইউজারনেম দিয়ে কোনো অ্যাকাউন্ট পাওয়া যায়নি!");
+                    return;
+                }
+
+                // Get the email associated with that username
+                querySnapshot.forEach((doc) => {
+                    emailToUse = doc.data().email;
+                });
+            }
+
+            await signInWithEmailAndPassword(auth, emailToUse, password);
             alert("Login successful!");
             window.location.href = "dashboard.html";
         } catch (error) {
-            alert(error.message);
+            alert("Login Error: " + error.message);
         }
     });
 }
@@ -104,7 +122,7 @@ const forgotForm = document.getElementById('forgotForm');
 if (forgotForm) {
     forgotForm.addEventListener('submit', async (e) => {
         e.preventDefault();
-        const email = document.getElementById('forgotEmail').value;
+        const email = document.getElementById('forgotEmail').value.trim();
 
         try {
             await sendPasswordResetEmail(auth, email);
