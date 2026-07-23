@@ -1,35 +1,33 @@
-// Function to handle service change and update Description/Time dynamically
-const serviceSelect = document.getElementById('serviceSelect');
-const descBox = document.getElementById('serviceDescription');
-const avgTimeBox = document.getElementById('avgTime');
-const minMaxText = document.getElementById('minMaxText');
+// Add New Service (Admin)
+const addServiceForm = document.getElementById('addServiceForm');
+if (addServiceForm) {
+    addServiceForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        const category = document.getElementById('serviceCategory').value.trim();
+        const name = document.getElementById('serviceName').value.trim();
+        const rate = parseFloat(document.getElementById('serviceRate').value);
+        const min = parseInt(document.getElementById('serviceMin').value);
+        const max = parseInt(document.getElementById('serviceMax').value);
+        const avgTime = document.getElementById('serviceAvgTime').value.trim();
+        const desc = document.getElementById('serviceDesc').value.trim();
 
-if (serviceSelect) {
-    serviceSelect.addEventListener('change', (e) => {
-        const selectedId = e.target.value;
-        const selectedService = servicesList.find(s => s.id === selectedId);
+        try {
+            await addDoc(collection(db, "services"), {
+                category: category,
+                name: name,
+                rate: rate,
+                min: min,
+                max: max,
+                avgTime: avgTime,
+                desc: desc,
+                createdAt: serverTimestamp()
+            });
 
-        if (selectedService) {
-            // Update Description (Format newlines to HTML break lines)
-            if (descBox) {
-                const formattedDesc = (selectedService.desc || "No description available.")
-                    .replace(/\n/g, '<br>');
-                descBox.innerHTML = formattedDesc;
-            }
-
-            // Update Average Time
-            if (avgTimeBox) {
-                avgTimeBox.innerText = selectedService.avgTime || "Instant";
-            }
-
-            // Update Min / Max
-            if (minMaxText) {
-                minMaxText.innerText = `Min: ${selectedService.min || 10} - Max: ${selectedService.max || 100000}`;
-            }
-        } else {
-            if (descBox) descBox.innerHTML = "Select a service to view details.";
-            if (avgTimeBox) avgTimeBox.innerText = "--";
-            if (minMaxText) minMaxText.innerText = "Min: 0 - Max: 0";
+            alert("সার্ভিস সফলভাবে অ্যাড হয়েছে!");
+            addServiceForm.reset();
+        } catch (error) {
+            alert("Error adding service: " + error.message);
         }
     });
 }
