@@ -240,3 +240,14 @@ function loadUserOrders(userId) {
         });
     });
 }
+// Default Sample Categories & Services
+const sampleServices = [
+    { category: "⭐ World Cheap Services ⭐", name: "Instagram Followers [ Cheapest ]", rate: 10.50, min: 100, max: 100000, desc: "- 🚀 Fast Delivery\n- ⚡ Cheapest Rate\n- ❌ Non-Drop No Guarantee" },
+    { category: "Instagram Followers (India) 🇮🇳", name: "Instagram Indian Followers [ Non-Drop 30 Days Refill ]", rate: 45.00, min: 50, max: 50000, desc: "- 🇮🇳 100% Real Indian Profiles\n- ♻️ 30 Days Refill Guarantee\n- ⚡ Speed: 5k-10k per day" },
+    { category: "Instagram Followers Premium", name: "Instagram High Quality Followers [ Lifetime Guaranteed ]", rate: 85.00, min: 10, max: 200000, desc: "- 👑 Premium Quality Real Accounts\n- 🛡️ Lifetime Guarantee\n- ⚡ Drop Rate: 0%" },
+    { category: "Instagram Likes [ Instant ] 🚀", name: "Instagram Real Post Likes [ Instant Start ]", rate: 5.20, min: 100, max: 50000, desc: "- ⚡ Instant Start\n- ❤️ Real Active Accounts\n- 🚀 Speed: 50k per day" },
+    { category: "Instagram Reels Views ⚡ 👀", name: "Instagram Reels Views [ Super Fast ]", rate: 2.00, min: 1000, max: 1000000, desc: "- 👀 Viral Speed Views\n- ⚡ Instant Start" },
+    { category: "Facebook Followers", name: "Facebook Profile / Page Followers [ Real ]", rate: 60.00, min: 100, max: 100000, desc: "- 👍 High Quality Profile Followers\n- ♻️ 30 Days Refill" },
+    { category: "Facebook Post Like [ Slow ]", name: "Facebook Post Reaction / Likes", rate: 35.00, min: 50, max: 20000, desc: "- 👍 Real Profile Likes\n- 🐢 Slow & Natural Speed" },
+    { category: "Telegram Channel / Group Members", name: "Telegram Channel Members [ Non-Drop ]", rate: 40.00, min: 100, max: 50000, desc: "- 📢 High Quality Members\n- ⚡ Fast Speed" }
+];
