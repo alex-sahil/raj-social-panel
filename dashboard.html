@@ -9,76 +9,210 @@
     
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; }
-        body { background: #020617; color: #f8fafc; min-height: 100vh; padding-bottom: 80px; }
+        
+        body { 
+            background: #22b8cf; /* Bright Cyan Top Background */
+            color: #334155; 
+            min-height: 100vh;
+            padding-bottom: 60px;
+        }
 
-        /* Top Navbar */
+        /* Navbar */
         .navbar {
-            display: flex; justify-content: space-between; align-items: center;
-            padding: 16px 6%; background: rgba(15, 23, 42, 0.9);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.08); backdrop-filter: blur(10px);
-            position: sticky; top: 0; z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+            background: #22b8cf;
         }
-        .logo { font-size: 20px; font-weight: 800; color: #38bdf8; text-decoration: none; }
-        .user-info { display: flex; align-items: center; gap: 15px; }
-        .balance-badge { background: rgba(56, 189, 248, 0.15); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.3); padding: 6px 14px; border-radius: 50px; font-weight: 700; font-size: 14px; }
-        .btn-logout { background: #ef4444; color: #fff; border: none; padding: 6px 12px; border-radius: 8px; cursor: pointer; font-weight: 600; font-size: 13px; }
+        .logo { font-size: 22px; font-weight: 800; color: #fff; text-decoration: none; display: flex; align-items: center; gap: 8px; }
+        .menu-icon { font-size: 24px; color: #fff; cursor: pointer; }
 
-        /* Main Container */
-        .container { max-width: 600px; margin: 25px auto; padding: 0 16px; }
+        .container { max-width: 480px; margin: 0 auto; padding: 10px 15px; }
 
-        .card {
-            background: rgba(15, 23, 42, 0.85); border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 20px; padding: 24px; box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
-            margin-bottom: 25px;
+        /* Top Info Cards */
+        .info-card {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+        .card-icon { font-size: 28px; color: #1e293b; width: 35px; text-align: center; }
+        .card-details h3 { font-size: 20px; font-weight: 800; color: #1e293b; line-height: 1.2; }
+        .card-details p { font-size: 13px; color: #64748b; font-weight: 600; margin-top: 2px; }
+
+        /* Quick Action Buttons */
+        .action-btns { display: flex; gap: 10px; margin: 15px 0 20px; }
+        .btn-action {
+            flex: 1;
+            padding: 12px;
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            font-weight: 700;
+            color: #1e293b;
+            font-size: 14px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            text-decoration: none;
         }
 
-        .card-title { font-size: 18px; font-weight: 700; color: #38bdf8; margin-bottom: 18px; display: flex; align-items: center; gap: 8px; }
+        /* Marquee Ticker */
+        .marquee-box {
+            color: #facc15;
+            font-weight: 700;
+            font-size: 13px;
+            margin-bottom: 15px;
+            overflow: hidden;
+            white-space: nowrap;
+        }
 
-        .form-group { margin-bottom: 16px; }
-        .form-group label { display: block; font-size: 13px; font-weight: 600; color: #cbd5e1; margin-bottom: 6px; }
+        /* Main Form Box */
+        .form-card {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 20px 18px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+        }
+
+        .search-box {
+            background: #e2f1f5;
+            border-radius: 12px;
+            padding: 10px 14px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 18px;
+        }
+        .search-box input { border: none; background: transparent; outline: none; width: 100%; font-size: 14px; }
+
+        .form-group { margin-bottom: 15px; }
+        .form-group label { display: block; font-size: 13px; font-weight: 700; color: #475569; margin-bottom: 6px; }
 
         .custom-select, .custom-input {
-            width: 100%; padding: 12px 16px; background: rgba(2, 6, 23, 0.7);
-            border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 12px;
-            color: #fff; font-size: 14px; outline: none; transition: 0.3s;
+            width: 100%;
+            padding: 12px 14px;
+            background: #e2f1f5;
+            border: none;
+            border-radius: 12px;
+            font-size: 13px;
+            font-weight: 600;
+            color: #1e293b;
+            outline: none;
         }
-        .custom-select:focus, .custom-input:focus { border-color: #38bdf8; box-shadow: 0 0 10px rgba(56, 189, 248, 0.2); }
 
-        .charge-box { background: rgba(2, 6, 23, 0.5); padding: 12px; border-radius: 10px; border: 1px dashed rgba(56, 189, 248, 0.3); font-weight: 700; color: #38bdf8; font-size: 15px; margin: 15px 0; }
-
-        .btn-order {
-            width: 100%; padding: 14px; background: linear-gradient(135deg, #0284c7, #38bdf8);
-            border: none; border-radius: 50px; color: #fff; font-size: 16px; font-weight: 700;
-            cursor: pointer; transition: 0.3s; box-shadow: 0 8px 20px rgba(56, 189, 248, 0.25);
+        /* Description Dark Box */
+        .desc-box {
+            background: #1e1e1e;
+            color: #d4d4d4;
+            padding: 14px;
+            border-radius: 12px;
+            font-size: 12px;
+            line-height: 1.6;
+            margin-bottom: 15px;
         }
-        .btn-order:hover { transform: translateY(-2px); opacity: 0.95; }
 
-        /* Order Table */
-        table { width: 100%; border-collapse: collapse; margin-top: 10px; }
-        th, td { padding: 10px; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.08); font-size: 13px; }
-        th { color: #94a3b8; font-weight: 600; }
-        .status-badge { padding: 4px 8px; border-radius: 6px; font-size: 11px; font-weight: 700; display: inline-block; }
-        .status-pending { background: rgba(234, 179, 8, 0.2); color: #eab308; }
-        .status-completed { background: rgba(34, 197, 94, 0.2); color: #22c55e; }
+        .avg-time-box {
+            background: #1e1e1e;
+            color: #ffffff;
+            padding: 12px 16px;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .btn-submit-order {
+            width: 100%;
+            padding: 14px;
+            background: #3b82f6;
+            border: none;
+            border-radius: 14px;
+            color: #ffffff;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+            margin-top: 10px;
+        }
     </style>
 </head>
 <body>
 
-    <!-- Navbar -->
+    <!-- Top Navbar -->
     <nav class="navbar">
-        <a href="dashboard.html" class="logo"><i class="fa-solid fa-rocket"></i> Raj Social Panel</a>
-        <div class="user-info">
-            <div class="balance-badge"><i class="fa-solid fa-wallet"></i> ₹<span id="userBalance">0.00</span></div>
-            <button id="logoutBtn" class="btn-logout"><i class="fa-solid fa-right-from-bracket"></i></button>
-        </div>
+        <a href="dashboard.html" class="logo">
+            <i class="fa-solid fa-chart-line"></i> RajSocialPanel
+        </a>
+        <i class="fa-solid fa-bars menu-icon" id="logoutBtn" title="Logout"></i>
     </nav>
 
     <div class="container">
-        <!-- New Order Card -->
-        <div class="card">
-            <h2 class="card-title"><i class="fa-solid fa-cart-plus"></i> New Order</h2>
+
+        <!-- User Welcome Card -->
+        <div class="info-card">
+            <div class="card-icon"><i class="fa-regular fa-user"></i></div>
+            <div class="card-details">
+                <h3 id="displayUsername">User</h3>
+                <p>Welcome To RAJ SOCIAL PANEL</p>
+            </div>
+        </div>
+
+        <!-- Total Spent Card -->
+        <div class="info-card">
+            <div class="card-icon"><i class="fa-solid fa-dollar-sign"></i></div>
+            <div class="card-details">
+                <h3>₹<span id="totalSpent">0</span></h3>
+                <p>Total Spent</p>
+            </div>
+        </div>
+
+        <!-- Panel Orders Card -->
+        <div class="info-card">
+            <div class="card-icon"><i class="fa-solid fa-cart-shopping"></i></div>
+            <div class="card-details">
+                <h3 id="totalOrdersCount">0</h3>
+                <p>Panel Orders</p>
+            </div>
+        </div>
+
+        <!-- Account Balance Card -->
+        <div class="info-card">
+            <div class="card-icon"><i class="fa-regular fa-credit-card"></i></div>
+            <div class="card-details">
+                <h3>₹<span id="userBalance">0</span></h3>
+                <p>Account Balance</p>
+            </div>
+        </div>
+
+        <!-- Add Funds & My Orders Quick Buttons -->
+        <div class="action-btns">
+            <a href="https://wa.me/919337028344" target="_blank" class="btn-action"><i class="fa-solid fa-indian-rupee-sign"></i> Add Funds</a>
+            <a href="#history" class="btn-action"><i class="fa-solid fa-cart-shopping"></i> My Orders</a>
+        </div>
+
+        <!-- Notice / Ticker -->
+        <div class="marquee-box">
+            <marquee>🔥 Fast • 💰 Affordable • 🔐 Secure SMM Services • ⚡ Trusted 💯</marquee>
+        </div>
+
+        <!-- New Order Card Form -->
+        <div class="form-card">
+            
+            <div class="search-box">
+                <i class="fa-solid fa-magnifying-glass" style="color: #94a3b8;"></i>
+                <input type="text" id="searchService" placeholder="Search">
+            </div>
+
             <form id="orderForm">
-                
                 <div class="form-group">
                     <label>Category</label>
                     <select id="categorySelect" class="custom-select" required>
@@ -87,58 +221,51 @@
                 </div>
 
                 <div class="form-group">
-                    <label>Service</label>
+                    <label>Services</label>
                     <select id="serviceSelect" class="custom-select" required>
                         <option value="">Select Service...</option>
                     </select>
                 </div>
 
                 <div class="form-group">
-                    <label>Link / Username</label>
-                    <input type="text" id="orderLink" class="custom-input" placeholder="https://instagram.com/..." required>
+                    <label>Description</label>
+                    <div class="desc-box" id="serviceDescription">
+                        - 🟢 Instant start<br>
+                        - ✨ High Quality Services<br>
+                        - 🚀 Fast Delivery<br>
+                        - ♻️ Refill Guarantee Available
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Average Time <i class="fa-solid fa-circle-info" style="color: #94a3b8;"></i></label>
+                    <div class="avg-time-box" id="avgTime">13 minutes</div>
+                </div>
+
+                <div class="form-group">
+                    <label>Link</label>
+                    <input type="text" id="orderLink" class="custom-input" placeholder="https://..." required>
                 </div>
 
                 <div class="form-group">
                     <label>Quantity</label>
-                    <input type="number" id="orderQuantity" class="custom-input" placeholder="1000" min="10" required>
+                    <input type="number" id="orderQuantity" class="custom-input" placeholder="1000" required>
+                    <span style="font-size: 11px; color: #64748b; margin-top: 4px; display: block;" id="minMaxText">Min: 10 - Max: 300000</span>
                 </div>
 
-                <div class="charge-box">
-                    Total Charge: ₹<span id="totalCharge">0.00</span>
+                <div class="form-group">
+                    <label>Charge</label>
+                    <div class="custom-input" style="font-weight: 700;">₹<span id="totalCharge">0.00</span></div>
                 </div>
 
-                <button type="submit" class="btn-order">Submit Order</button>
+                <button type="submit" class="btn-submit-order">New Order</button>
             </form>
         </div>
 
-        <!-- Recent Orders Card -->
-        <div class="card">
-            <h2 class="card-title"><i class="fa-solid fa-clock-rotate-left"></i> Order History</h2>
-            <div style="overflow-x: auto;">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Service</th>
-                            <th>Qty</th>
-                            <th>Charge</th>
-                            <th>Status</th>
-                        </tr>
-                    </thead>
-                    <tbody id="ordersTableBody">
-                        <tr><td colspan="5" style="text-align: center; color: #94a3b8;">No orders found</td></tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
     </div>
 
-    <!-- Floating WhatsApp Help Button -->
-    <a href="https://wa.me/919337028344" target="_blank" style="position: fixed; bottom: 20px; right: 20px; background: #25d366; color: white; padding: 10px 18px; border-radius: 50px; display: flex; align-items: center; gap: 8px; font-weight: 700; font-size: 14px; text-decoration: none; box-shadow: 0 4px 12px rgba(0,0,0,0.4); z-index: 1000;">
-        <i class="fa-brands fa-whatsapp" style="font-size: 20px;"></i> HELP
-    </a>
-
-    <!-- Firebase Connection -->
+    <!-- Connect Firebase Logic -->
     <script type="module" src="app.js"></script>
+
 </body>
 </html>
