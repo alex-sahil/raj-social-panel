@@ -15,33 +15,28 @@
             color: #f8fafc;
             min-height: 100vh;
         }
-
         .hero-header {
             text-align: center;
             padding: 30px 20px 10px;
             max-width: 700px;
             margin: 0 auto;
         }
-
         .main-title {
             font-size: 30px;
             font-weight: 800;
             color: #38bdf8;
             margin-bottom: 8px;
         }
-
         .desc-text {
             font-size: 14px;
             color: #94a3b8;
             line-height: 1.5;
         }
-
         .auth-card-wrapper {
             max-width: 440px;
             width: 90%;
             margin: 15px auto 40px;
         }
-
         .custom-card {
             background: rgba(15, 23, 42, 0.85);
             backdrop-filter: blur(16px);
@@ -50,7 +45,6 @@
             padding: 28px 24px;
             box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
         }
-
         .tab-group {
             display: flex;
             background: rgba(2, 6, 23, 0.6);
@@ -59,7 +53,6 @@
             margin-bottom: 25px;
             border: 1px solid rgba(255,255,255,0.05);
         }
-
         .tab-btn {
             flex: 1;
             padding: 10px;
@@ -72,25 +65,20 @@
             cursor: pointer;
             transition: 0.3s;
         }
-
         .tab-btn.active {
             background: #38bdf8;
             color: #020617;
             box-shadow: 0 4px 12px rgba(56, 189, 248, 0.3);
         }
-
         .form-box {
             display: none;
         }
-
         .form-box.active {
             display: block;
         }
-
         .input-group {
             margin-bottom: 15px;
         }
-
         .input-group label {
             display: block;
             font-size: 13px;
@@ -98,7 +86,6 @@
             color: #cbd5e1;
             margin-bottom: 6px;
         }
-
         .custom-input {
             width: 100%;
             padding: 12px 16px;
@@ -110,12 +97,10 @@
             outline: none;
             transition: 0.3s;
         }
-
         .custom-input:focus {
             border-color: #38bdf8;
             box-shadow: 0 0 12px rgba(56, 189, 248, 0.25);
         }
-
         .checkbox-group {
             display: flex;
             align-items: center;
@@ -124,12 +109,10 @@
             color: #94a3b8;
             margin: 15px 0;
         }
-
         .checkbox-group a {
             color: #38bdf8;
             text-decoration: none;
         }
-
         .btn-submit {
             width: 100%;
             padding: 14px;
@@ -143,12 +126,10 @@
             transition: 0.3s;
             box-shadow: 0 8px 20px rgba(56, 189, 248, 0.25);
         }
-
         .btn-submit:hover {
             transform: translateY(-2px);
             opacity: 0.95;
         }
-
         .btn-google {
             width: 100%;
             padding: 12px;
@@ -166,11 +147,9 @@
             margin-top: 15px;
             transition: 0.3s;
         }
-
         .btn-google:hover {
             background: #1d4ed8;
         }
-
         .divider {
             display: flex;
             align-items: center;
@@ -179,16 +158,13 @@
             font-size: 12px;
             margin: 18px 0;
         }
-
         .divider::before, .divider::after {
             content: '';
             flex: 1;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
-
         .divider::before { margin-right: 10px; }
         .divider::after { margin-left: 10px; }
-
         .remember-row {
             display: flex;
             justify-content: space-between;
@@ -197,7 +173,6 @@
             color: #94a3b8;
             margin-bottom: 15px;
         }
-
         .remember-row a {
             color: #38bdf8;
             text-decoration: none;
@@ -211,7 +186,6 @@
         <a href="index.html" class="logo" style="text-decoration: none; font-size: 20px; font-weight: 800; color: #38bdf8;">
             <i class="fa-solid fa-rocket"></i> Raj Social Panel
         </a>
-        <!-- Telegram Channel Link -->
         <a href="https://t.me/RajSocialPanel" target="_blank" style="background: #0088cc; color: white; padding: 8px 16px; border-radius: 50px; text-decoration: none; font-size: 13px; font-weight: 600; display: flex; align-items: center; gap: 6px;">
             <i class="fa-brands fa-telegram"></i> Join Telegram
         </a>
@@ -228,17 +202,17 @@
         <div class="auth-card-wrapper">
             <div class="custom-card">
                 
-                <!-- Tab Switcher (Sign In active by default) -->
+                <!-- Tab Switcher -->
                 <div class="tab-group">
                     <button class="tab-btn active" onclick="switchTab('login')">Sign In</button>
                     <button class="tab-btn" onclick="switchTab('register')">Sign Up</button>
                 </div>
 
-                <!-- Login Form (Default Active) -->
+                <!-- Login Form (Email or Username Support) -->
                 <form id="loginForm" class="form-box active">
                     <div class="input-group">
-                        <label>Email Address</label>
-                        <input type="email" id="loginEmail" class="custom-input" placeholder="Enter your email" required>
+                        <label>Email or Username</label>
+                        <input type="text" id="loginEmail" class="custom-input" placeholder="Enter email or username" required>
                     </div>
                     
                     <div class="input-group">
@@ -318,7 +292,7 @@
         </div>
     </section>
 
-    <!-- Floating WhatsApp Direct Inbox Button (+919337028344) -->
+    <!-- Floating WhatsApp Direct Inbox Button -->
     <a href="https://wa.me/919337028344" target="_blank" style="position: fixed; bottom: 25px; right: 25px; background: #25d366; color: white; padding: 12px 20px; border-radius: 50px; display: flex; align-items: center; gap: 8px; font-weight: 700; font-size: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.4); text-decoration: none; z-index: 1000;">
         <i class="fa-brands fa-whatsapp" style="font-size: 22px;"></i> HELP
     </a>
