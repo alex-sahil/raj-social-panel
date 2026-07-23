@@ -1,21 +1,73 @@
-<!-- Add New Service Section in admin.html -->
-<div class="admin-section">
-    <h2 class="section-title">➕ Add New Service</h2>
-    <form id="addServiceForm">
-        <div class="form-grid">
-            <input type="text" id="serviceCategory" class="input-box" placeholder="Category (e.g., Instagram Followers)" required>
-            <input type="text" id="serviceName" class="input-box" placeholder="Service Name (e.g., 2720 Instagram Followers)" required>
-            <input type="number" id="serviceRate" class="input-box" step="0.01" placeholder="Rate per 1000 (₹)" required>
-            <input type="number" id="serviceMin" class="input-box" placeholder="Min Order (100)" required>
-            <input type="number" id="serviceMax" class="input-box" placeholder="Max Order (1000000)" required>
-            <input type="text" id="serviceAvgTime" class="input-box" placeholder="Average Time (e.g., 41 minutes)" required>
-        </div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Raj Social Panel</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; }
+        body { background: #020617; color: #f8fafc; padding: 20px; }
         
-        <div style="margin-top: 10px;">
-            <label style="display:block; font-size:13px; color:#94a3b8; margin-bottom:5px;">Service Description / Details:</label>
-            <textarea id="serviceDesc" class="input-box" style="height: 100px; width:100%; resize:vertical;" placeholder="- Link: Instagram Username&#10;- Quality: 100% Real Indian Accounts&#10;- Drop: 0% Non Drop&#10;- Speed: Day 100K" required></textarea>
-        </div>
+        .admin-header {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 20px; background: rgba(15, 23, 42, 0.8);
+            border-radius: 16px; border: 1px solid rgba(255,255,255,0.1); margin-bottom: 25px;
+        }
+        .admin-title { color: #38bdf8; font-size: 22px; font-weight: 800; }
+        
+        .admin-section {
+            background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255,255,255,0.08);
+            padding: 25px; border-radius: 20px; margin-bottom: 30px;
+        }
+        .section-title { font-size: 18px; font-weight: 700; margin-bottom: 15px; color: #38bdf8; }
 
-        <button type="submit" class="btn-admin" style="margin-top: 10px;">Add Service</button>
-    </form>
-</div>
+        .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        .input-box { width: 100%; padding: 12px 16px; background: #0f172a; border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; color: #fff; outline: none; margin-bottom: 12px; }
+        .btn-admin { padding: 12px 24px; background: #38bdf8; color: #020617; border: none; border-radius: 10px; font-weight: 700; cursor: pointer; transition: 0.3s; }
+        .btn-admin:hover { opacity: 0.9; }
+    </style>
+</head>
+<body>
+
+    <div class="admin-header">
+        <div class="admin-title"><i class="fa-solid fa-user-shield"></i> Admin Panel</div>
+        <a href="dashboard.html" style="color: #94a3b8; text-decoration: none; font-size: 14px;"><i class="fa-solid fa-arrow-left"></i> Go to Dashboard</a>
+    </div>
+
+    <!-- Add New Service Section -->
+    <div class="admin-section">
+        <h2 class="section-title">➕ Add New Service</h2>
+        <form id="addServiceForm">
+            <div class="form-grid">
+                <input type="text" id="serviceCategory" class="input-box" placeholder="Category (e.g., Instagram Followers)" required>
+                <input type="text" id="serviceName" class="input-box" placeholder="Service Name (e.g., Instagram Followers Indian)" required>
+                <input type="number" id="serviceRate" class="input-box" step="0.01" placeholder="Rate per 1000 (₹)" required>
+                <input type="number" id="serviceMin" class="input-box" placeholder="Min Order (e.g., 100)" required>
+                <input type="number" id="serviceMax" class="input-box" placeholder="Max Order (e.g., 100000)" required>
+                <input type="text" id="serviceAvgTime" class="input-box" placeholder="Average Time (e.g., 15 minutes)" required>
+            </div>
+            
+            <textarea id="serviceDesc" class="input-box" style="height: 100px; width:100%; margin-top:10px;" placeholder="- Quality: 100% Real Accounts&#10;- Start: Instant&#10;- Drop: 0% Non Drop" required></textarea>
+
+            <button type="submit" class="btn-admin" style="margin-top: 10px;">Add Service</button>
+        </form>
+    </div>
+
+    <!-- Balance Management -->
+    <div class="admin-section">
+        <h2 class="section-title">💰 Add User Balance</h2>
+        <form id="addBalanceForm">
+            <div class="form-grid">
+                <input type="email" id="userEmailBalance" class="input-box" placeholder="User Email Address" required>
+                <input type="number" id="amountToAdd" class="input-box" step="0.01" placeholder="Amount (₹)" required>
+            </div>
+            <button type="submit" class="btn-admin">Add Balance</button>
+        </form>
+    </div>
+
+    <script type="module" src="app.js"></script>
+</body>
+</html>
